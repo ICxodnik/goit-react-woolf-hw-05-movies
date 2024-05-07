@@ -1,5 +1,5 @@
 import React from 'react';
-import { getImageSrc, getImageSrcSet } from 'services/image';
+import { getImageSrc, getImageSrcSet, getDefaultImage } from 'services/image';
 import css from 'components/Gallery/GalleryItem/index.module.css';
 
 export const GalleryItem = ({ film }) => {
@@ -12,6 +12,7 @@ export const GalleryItem = ({ film }) => {
         alt={film.title ?? film.name}
         width="220px"
         height="330px"
+        style={getDefaultImage()}
       ></img>
       <span className={css.title}>{film.title ?? film.name}</span>
       <span className={css.votes}>{film.vote_average.toFixed(1)}</span>

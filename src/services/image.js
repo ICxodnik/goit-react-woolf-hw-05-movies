@@ -1,6 +1,6 @@
 const smallImage = "https://media.themoviedb.org/t/p/w220_and_h330_face";
 const bigImage = "https://media.themoviedb.org/t/p/w440_and_h660_face";
-const defaultImage = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg";
+const defaultImage = `url("https://placehold.co/100x100?text=Secret+Poster")`;
 
 
 export function getImageSrc(path) {
@@ -12,5 +12,5 @@ export function getImageSrcSet(path) {
 }
 
 export function getDefaultImage() {
-    return defaultImage;
+    return { backgroundImage: defaultImage };
 }
