@@ -9,10 +9,12 @@ export const GalleryItem = ({ film }) => {
         className={css.poster}
         src={getImageSrc(film.poster_path)}
         srcSet={getImageSrcSet(film.poster_path)}
-        alt={film.title}
+        alt={film.title ?? film.name}
+        width="220px"
+        height="330px"
       ></img>
-      <span className={css.title}>{film.title}</span>
-      <span className={css.votes}>{film.vote_average}</span>
+      <span className={css.title}>{film.title ?? film.name}</span>
+      <span className={css.votes}>{film.vote_average.toFixed(1)}</span>
     </div>
   );
 };

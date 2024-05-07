@@ -1,6 +1,37 @@
 .gallery {
+    width: 100vw;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: auto auto;
     padding: 10px;
     gap: 10px;
+}
+
+@media (min-width: calc(660px + 20px)) {
+    .gallery {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media (min-width: calc(880px + 30px)) {
+    .gallery {
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
+@media (min-width: calc(1100px + 40px)) {
+    .gallery {
+        grid-template-columns: auto auto auto auto auto;
+    }
+}
+
+@media (min-width: calc(1320px + 50px)) {
+    .gallery {
+        grid-template-columns: auto auto auto auto auto auto;
+    }
+}
+
+@media (min-width: calc(1540px + 60px)) {
+    .gallery {
+        grid-template-columns: auto auto auto auto auto auto auto;
+    }
 }
