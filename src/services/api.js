@@ -15,14 +15,14 @@ export async function getTrending() {
 }
 
 export async function getMovie(searchValue, page) {
-    const response = await filmFetcher.get('/search/movie', {
+    const response = await filmFetcher.get('search/movie', {
         params: {
-            q: searchValue,
+            query: searchValue,
             page,
         }
     });
     console.log(response);
-    return response;
+    return response.data.results;;
 }
 
 export async function getMovieDetails(id) {
