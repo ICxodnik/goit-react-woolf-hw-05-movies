@@ -7,7 +7,7 @@ import { Reviews } from 'components/Reviews';
 
 export const App = () => {
   return (
-    <div>
+    <div className="mainPage">
       <nav>
         <NavLink to="/" end>
           Home
