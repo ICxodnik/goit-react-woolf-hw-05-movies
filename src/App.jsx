@@ -9,10 +9,12 @@ export const App = () => {
   return (
     <div className="mainPage">
       <nav>
-        <NavLink to="/" end>
-          Home
+        <NavLink className="navLink" to="/" end>
+          Trending
         </NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+        <NavLink className="navLink" to="/movies">
+          Search Movies
+        </NavLink>
       </nav>
 
       <Routes>
