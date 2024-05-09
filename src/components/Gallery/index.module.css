@@ -1,37 +1,43 @@
 
 .gallery {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 1fr;
 }
 
-@media (min-width: calc(660px + 20px)) {
+@media (min-width: calc(500px)) {
     .gallery {
-        grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: calc(880px + 30px)) {
+@media (min-width: calc(850px)) {
     .gallery {
-        grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (min-width: calc(1100px + 40px)) {
+@media (min-width: calc(1100px)) {
     .gallery {
-        grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (min-width: calc(1320px + 50px)) {
+@media (min-width: calc(1500px)) {
     .gallery {
-        grid-template-columns: auto auto auto auto auto auto;
+    grid-template-columns: repeat(5, 1fr);
     }
 }
 
-@media (min-width: calc(1540px + 60px)) {
+@media (min-width: calc(1800px)) {
     .gallery {
-        grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: calc(2100px)) {
+    .gallery {
+    grid-template-columns: repeat(7, 1fr);
     }
 }
