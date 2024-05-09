@@ -1,6 +1,6 @@
 const smallImage = "https://media.themoviedb.org/t/p/w220_and_h330_face";
 const bigImage = "https://media.themoviedb.org/t/p/w440_and_h660_face";
-const defaultImage = `url("https://placehold.co/100x100?text=Secret+Poster")`;
+const defaultImage = "https://placehold.co/220x330?text=Secret+Poster";
 
 
 export function getImageSrc(path) {
@@ -12,5 +12,5 @@ export function getImageSrcSet(path) {
 }
 
 export function getDefaultImage() {
-    return { backgroundImage: defaultImage };
+    return defaultImage;
 }
