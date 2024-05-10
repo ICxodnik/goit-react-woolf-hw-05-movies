@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { getMovie } from '../../services/api';
 import css from './index.module.css';
 import { Gallery } from 'components/Gallery';
+import { useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const defaultPage = 1;
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchResult, setSearchResult] = useState([]);
-  const [filter, setFilter] = useState('');
+
+  const filter = searchParams.get('filter') ?? '';
+  // const [filter, setFilter] = useState('');
   const [page, setPage] = useState(defaultPage);
   const [error, setError] = useState(null);
 
@@ -16,12 +21,17 @@ export const Movies = () => {
         setSearchResult(value);
       })
       .catch(error => setError(error));
+
+    async function getLinks() {
+      const data = await getMovie(filter, page);
+      return data;
+    }
   }, [filter, page]);
 
   const handleFilter = e => {
     setPage(null);
     setPage(defaultPage);
-    setFilter(e.currentTarget.value);
+    setSearchParams({ filter: e.currentTarget.value });
   };
 
   const onHandlePrevPage = e => {
@@ -34,11 +44,6 @@ export const Movies = () => {
   const onHandleNextPage = e => {
     setPage(page + 1);
   };
-
-  async function getLinks() {
-    const data = await getMovie(filter, page);
-    return data;
-  }
 
   if (!searchResult.length) {
     return (
