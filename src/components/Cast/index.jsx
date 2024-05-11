@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { getMovieCredits } from '../../services/api';
 import { useParams } from 'react-router-dom';
 import css from './index.module.css';
@@ -18,8 +18,9 @@ export default function Cast() {
 
   useEffect(() => {
     setError(null);
-
-    if (!movieId) return;
+    if (!movieId) {
+      return;
+    }
     getData();
 
     async function getData() {
@@ -34,6 +35,12 @@ export default function Cast() {
       }
     }
   }, [movieId]);
+
+  const memoizedData = useMemo(() =>
+    cast
+      ? cast.sort((act1, act2) => act2.popularity - act1.popularity)
+      : [][cast]
+  );
 
   const handleShowAll = () => {
     setShowAll(false);
@@ -58,8 +65,7 @@ export default function Cast() {
   return (
     <>
       <div className={css.reviews}>
-        {cast
-          .sort((act1, act2) => act2.popularity - act1.popularity)
+        {memoizedData
           .slice(0, showAll ? maxSize : unlimeted) //works one time
           .map(act => (
             <div className={css.cast} key={act.id}>
