@@ -83,16 +83,14 @@ export default function Cast() {
             </div>
           ))}
       </div>
-      {cast.length > maxSize &&
-        (showAllSelected ? (
-          cast.length > maxScrollSize && <ScrollUp />
-        ) : (
-          <div className="smallButton">
-            <span className="content" onClick={handleShowAll}>
-              show all ▼
-            </span>
-          </div>
-        ))}
+      {showAllSelected && cast.length > maxScrollSize && <ScrollUp />}
+      {!showAllSelected && cast.length > maxSize && (
+        <div className="smallButton">
+          <span className="content" onClick={handleShowAll}>
+            show all ▼
+          </span>
+        </div>
+      )}
     </>
   );
 }
