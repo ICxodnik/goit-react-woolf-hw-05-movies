@@ -5,7 +5,7 @@ import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
 
-export const Reviews = () => {
+export default function Reviews() {
   const { movieId } = useParams();
 
   const [review, setReview] = useState(null);
@@ -65,4 +65,4 @@ export const Reviews = () => {
       ))}
     </div>
   );
-};
+}

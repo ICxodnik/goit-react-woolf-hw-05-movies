@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-export function Overview() {
+export default function Overview() {
   const location = useLocation();
   if (!location.state) {
     return;

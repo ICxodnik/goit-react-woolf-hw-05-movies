@@ -3,7 +3,7 @@ import { getTrending } from '../../services/api';
 import { Gallery } from 'components/Gallery';
 import css from './index.module.css';
 
-export const Home = () => {
+export default function Home() {
   const [recomends, setRecomends] = useState([]);
   const [error, setError] = useState(null);
 
@@ -30,4 +30,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
+}

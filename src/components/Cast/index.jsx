@@ -5,7 +5,7 @@ import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
 
-export const Cast = () => {
+export default function Cast() {
   const { movieId } = useParams();
 
   const [cast, setCast] = useState(null);
@@ -62,4 +62,4 @@ export const Cast = () => {
         ))}
     </div>
   );
-};
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
@@ -7,7 +7,7 @@ import css from './index.module.css';
 import { getImageSrc, getImageSrcSet, getDefaultImage } from 'services/image';
 import Loader from '../../components/Loader';
 
-export const MovieDetails = () => {
+export default function MovieDetails() {
   const { movieId } = useParams();
 
   const location = useLocation();
@@ -103,11 +103,13 @@ export const MovieDetails = () => {
                   Reviews
                 </NavLink>
               </div>
-              <Outlet />
+              <Suspense fallback={<Loader hide={false} />}>
+                <Outlet />
+              </Suspense>
             </div>
           </div>
         </div>
       )}
     </div>
   );
-};
+}

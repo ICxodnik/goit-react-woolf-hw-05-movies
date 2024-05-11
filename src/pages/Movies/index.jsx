@@ -4,7 +4,7 @@ import css from './index.module.css';
 import { Gallery } from 'components/Gallery';
 import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+export default function Movies() {
   const defaultPage = 1;
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -82,4 +82,4 @@ export const Movies = () => {
       </div>
     </div>
   );
-};
+}
