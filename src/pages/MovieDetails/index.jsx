@@ -5,12 +5,15 @@ import { getMovieDetails } from '../../services/api';
 import { useParams } from 'react-router-dom';
 import css from './index.module.css';
 import { getImageSrc, getImageSrcSet, getDefaultImage } from 'services/image';
+import Loader from '../../components/Loader';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
+  const [isLoading, setIsLoading] = useState(false);
+
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
 
@@ -22,10 +25,13 @@ export const MovieDetails = () => {
 
     async function getData() {
       try {
+        setIsLoading(true);
         const moviData = await getMovieDetails(movieId);
         setMovie(moviData);
       } catch (ex) {
         setError(ex.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   }, [movieId]);
@@ -41,6 +47,7 @@ export const MovieDetails = () => {
       <Link to={backLinkHref} className="button">
         ← Back to search
       </Link>
+      <Loader hide={!isLoading} />
       {error && <div className={css.error}>{error}</div>}
       {movie && (
         <div className={css.movie}>
