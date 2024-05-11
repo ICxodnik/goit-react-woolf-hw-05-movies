@@ -66,7 +66,7 @@ export default function Cast() {
         {memoizedData
           .slice(0, showAllSelected ? unlimeted : maxSize) //works one time
           .map(act => (
-            <div className={css.cast} key={act.id}>
+            <div className={css.cast} key={act.credit_id}>
               <div className={css.imageWrapper}>
                 <img
                   className={css.poster}
