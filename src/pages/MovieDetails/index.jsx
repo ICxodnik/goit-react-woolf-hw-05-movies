@@ -44,7 +44,7 @@ export const MovieDetails = () => {
               src={getImageSrc(movie.poster_path)}
               srcSet={getImageSrcSet(movie.poster_path)}
               alt={movie.title ?? movie.name}
-              height="440px"
+              height="600px"
             ></img>
             <div className={css.movieInfo}>
               <div className={css.generalInfo}>

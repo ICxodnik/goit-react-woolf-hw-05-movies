@@ -1,7 +1,7 @@
 .detailsPage {
     padding: 40px;
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px,
-                                rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px,
+            rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
 }
 
@@ -14,6 +14,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-width: 300px;
+    max-width: 850px;
 }
 
 .generalInfo {
@@ -33,7 +35,7 @@
 .movieData {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 20px;
     padding-top: 20px;
     align-items: flex-start;
 }
@@ -45,9 +47,9 @@
 }
 
 .value {
-    font-size: 14px;
-    color: rgb(53, 52, 52);
-    font-weight: 500;
+    font-size: 12px;
+    color: rgb(60, 59, 59);
+    font-weight: 600;
 }
 
 .name {
@@ -63,9 +65,24 @@
     color:rgb(121, 121, 121);
     cursor: pointer;
     width: 100%;
+    font-weight: 600;
 }
 
 .button:hover, 
 .button:focus {
     color: rgb(96, 47, 25);
+}
+
+.poster {
+    flex-shrink: 1;
+}
+
+@media (max-width:850px) {
+    .movieData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 }
