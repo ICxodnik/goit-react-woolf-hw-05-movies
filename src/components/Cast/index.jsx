@@ -5,6 +5,7 @@ import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
 import { ScrollUp } from 'components/ScrollUp';
+import { Message } from 'components/Message';
 
 export default function Cast() {
   const maxSize = 12;
@@ -12,7 +13,7 @@ export default function Cast() {
 
   const { movieId } = useParams();
 
-  const [showAll, setShowAll] = useState(true);
+  const [showAllSelected, setShowAllSelected] = useState(false);
   const [cast, setCast] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,18 +45,18 @@ export default function Cast() {
   );
 
   const handleShowAll = () => {
-    setShowAll(false);
+    setShowAllSelected(true);
   };
 
   if (isLoading) {
     return <Loader hide={!isLoading} />;
   }
   if (error) {
-    return <div className={css.reviews}>{error}</div>;
+    return <Message level="error" message={error} />;
   }
   if (!cast || !cast.length) {
     return (
-      <div className={css.reviews}>We don't have any casts for this movie.</div>
+      <Message level="info" message="We don't have any casts for this movie." />
     );
   }
 
@@ -63,7 +64,7 @@ export default function Cast() {
     <>
       <div className={css.reviews}>
         {memoizedData
-          .slice(0, showAll ? maxSize : unlimeted) //works one time
+          .slice(0, showAllSelected ? unlimeted : maxSize) //works one time
           .map(act => (
             <div className={css.cast} key={act.id}>
               <div className={css.imageWrapper}>
@@ -81,15 +82,16 @@ export default function Cast() {
             </div>
           ))}
       </div>
-      {showAll ? (
-        <div className="smallButton">
-          <span className="content" onClick={handleShowAll}>
-            show all ▼
-          </span>
-        </div>
-      ) : (
-        <ScrollUp />
-      )}
+      {cast.length > maxSize &&
+        (showAllSelected ? (
+          <ScrollUp />
+        ) : (
+          <div className="smallButton">
+            <span className="content" onClick={handleShowAll}>
+              show all ▼
+            </span>
+          </div>
+        ))}
     </>
   );
 }
