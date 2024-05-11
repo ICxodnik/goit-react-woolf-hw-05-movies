@@ -8,6 +8,7 @@ import { ScrollUp } from 'components/ScrollUp';
 import { Message } from 'components/Message';
 
 export default function Reviews() {
+  const minReviewCount = 5;
   const { movieId } = useParams();
 
   const [review, setReview] = useState(null);
@@ -67,7 +68,7 @@ export default function Reviews() {
           </div>
         ))}
       </div>
-      <ScrollUp />
+      {review.length > minReviewCount && <ScrollUp />}
     </>
   );
 }

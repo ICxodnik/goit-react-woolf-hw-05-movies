@@ -9,6 +9,7 @@ import { Message } from 'components/Message';
 
 export default function Cast() {
   const maxSize = 12;
+  const maxScrollSize = 24;
   const unlimeted = -1;
 
   const { movieId } = useParams();
@@ -84,7 +85,7 @@ export default function Cast() {
       </div>
       {cast.length > maxSize &&
         (showAllSelected ? (
-          <ScrollUp />
+          cast.length > maxScrollSize && <ScrollUp />
         ) : (
           <div className="smallButton">
             <span className="content" onClick={handleShowAll}>
