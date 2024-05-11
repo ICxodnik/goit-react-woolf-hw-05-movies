@@ -3,12 +3,14 @@ import { getMovieReviews } from '../../services/api';
 import { useParams } from 'react-router-dom';
 import css from './index.module.css';
 import { getImageSrc } from 'services/image';
+import Loader from '../Loader';
 
 export const Reviews = () => {
   const { movieId } = useParams();
 
   const [review, setReview] = useState(null);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setError(null);
@@ -18,15 +20,21 @@ export const Reviews = () => {
 
     async function getData() {
       try {
+        setIsLoading(true);
         const data = await getMovieReviews(movieId);
         console.log(data);
         setReview(data);
       } catch (ex) {
         setError(ex.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   }, [movieId]);
 
+  if (isLoading) {
+    return <Loader hide={!isLoading} />;
+  }
   if (!review || !review.length) {
     return (
       <div className={css.reviews}>
