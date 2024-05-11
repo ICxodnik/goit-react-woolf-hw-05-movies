@@ -58,21 +58,6 @@
     font-weight: 700;
 }
 
-.button {
-    display: inline-block;
-    font-style: normal;
-    text-decoration: none;
-    color:rgb(121, 121, 121);
-    cursor: pointer;
-    width: 100%;
-    font-weight: 600;
-}
-
-.button:hover, 
-.button:focus {
-    color: rgb(96, 47, 25);
-}
-
 .poster {
     flex-shrink: 1;
 }

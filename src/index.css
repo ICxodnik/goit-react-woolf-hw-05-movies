@@ -38,3 +38,29 @@ nav {
 .navLink.active {
   color: rgb(96, 47, 25);
 }
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.button {
+  display: inline-block;
+  font-style: normal;
+  text-decoration: none;
+  color: rgb(121, 121, 121);
+  cursor: pointer;
+  font-weight: 600;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  padding: 10px;
+  border: 0;
+}
+
+.button:hover,
+.button:focus,
+.button .active {
+  color: rgb(96, 47, 25);
+  background-color: rgb(233, 231, 231);
+}

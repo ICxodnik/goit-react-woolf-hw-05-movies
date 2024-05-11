@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
 import { useParams } from 'react-router-dom';
 import css from './index.module.css';
@@ -38,7 +38,7 @@ export const MovieDetails = () => {
         evt.target.srcset = '';
       }}
     >
-      <Link to={backLinkHref} className={css.button}>
+      <Link to={backLinkHref} className="button">
         ← Back to search
       </Link>
       {error && <div className={css.error}>{error}</div>}
@@ -73,11 +73,19 @@ export const MovieDetails = () => {
                 <span className={css.title}>Country:</span>
                 <span className={css.value}>{movie.origin_country[0]}</span>
               </div>
+              <div className="buttons">
+                <NavLink to={`/movies/${movie.id}/cast`} className="button">
+                  Cast
+                </NavLink>
+                <NavLink to={`/movies/${movie.id}/reviews`} className="button">
+                  Reviews
+                </NavLink>
+              </div>
+              <Outlet />
             </div>
           </div>
         </div>
       )}
-      <Outlet />
     </div>
   );
 };

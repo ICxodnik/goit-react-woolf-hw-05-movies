@@ -68,9 +68,13 @@ export const Movies = () => {
       ></input>
       <Gallery films={searchResult}></Gallery>
       <div className={css.pages}>
-        <button onClick={onHandlePrevPage}>Prev Page</button>
+        <button className="button" onClick={onHandlePrevPage}>
+          Prev Page
+        </button>
         <span>{page}</span>
-        <button onClick={onHandleNextPage}>Next Page</button>
+        <button className="button" onClick={onHandleNextPage}>
+          Next Page
+        </button>
       </div>
     </div>
   );
