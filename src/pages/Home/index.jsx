@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTrending } from '../../services/api';
 import { Gallery } from 'components/Gallery';
+import { Message } from 'components/Message';
 import css from './index.module.css';
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <Message level="error" message={error} />;
   }
   return (
     <div>

@@ -5,6 +5,7 @@ import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
 import { ScrollUp } from 'components/ScrollUp';
+import { Message } from 'components/Message';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -36,13 +37,14 @@ export default function Reviews() {
     return <Loader hide={!isLoading} />;
   }
   if (error) {
-    return <div className={css.reviews}>{error}</div>;
+    return <Message level="error" message={error} />;
   }
   if (!review || !review.length) {
     return (
-      <div className={css.reviews}>
-        We don't have any reviews for this movie.
-      </div>
+      <Message
+        level="info"
+        message="We don't have any reviews for this movie."
+      />
     );
   }
   return (

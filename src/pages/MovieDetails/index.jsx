@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import css from './index.module.css';
 import { getImageSrc, getImageSrcSet, getDefaultImage } from 'services/image';
 import Loader from '../../components/Loader';
+import { Message } from 'components/Message';
 
 export default function MovieDetails() {
   const { movieId } = useParams();
@@ -48,7 +49,7 @@ export default function MovieDetails() {
         ← Back to search
       </Link>
       <Loader hide={!isLoading} />
-      {error && <div className={css.error}>{error}</div>}
+      {error && <Message level="error" message={error} />}
       {movie && (
         <div className={css.movie}>
           <div className={css.movieData}>

@@ -1,12 +1,18 @@
 .info {
     color: rgb(60, 59, 59);
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px;
 }
 
 .warning {
     color:orange;
+    font-weight: 500;
+    padding: 10px;
 }
 
 .error {
     color: brown;
+    font-weight: 500;
+    padding: 10px;
 }
