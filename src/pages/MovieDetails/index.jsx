@@ -64,8 +64,6 @@ export const MovieDetails = () => {
                 <span className={css.value}>
                   {Math.ceil(movie.vote_average * 10)}%
                 </span>
-                <span className={css.title}>Overview:</span>
-                <span className={css.value}>{movie.overview}</span>
                 <span className={css.title}>Release date:</span>
                 <span className={css.value}>{movie.release_date}</span>
                 <span className={css.title}>Status:</span>
@@ -74,10 +72,27 @@ export const MovieDetails = () => {
                 <span className={css.value}>{movie.origin_country[0]}</span>
               </div>
               <div className="buttons">
-                <NavLink to={`/movies/${movie.id}/cast`} className="button">
+                <NavLink
+                  end
+                  to={`/movies/${movie.id}`}
+                  state={{ film: movie, from: backLinkHref }}
+                  className="button"
+                >
+                  Overview
+                </NavLink>
+                <NavLink
+                  to={`/movies/${movie.id}/cast`}
+                  state={{ from: backLinkHref }}
+                  className="button"
+                >
                   Cast
                 </NavLink>
-                <NavLink to={`/movies/${movie.id}/reviews`} className="button">
+
+                <NavLink
+                  to={`/movies/${movie.id}/reviews`}
+                  state={{ from: backLinkHref }}
+                  className="button"
+                >
                   Reviews
                 </NavLink>
               </div>

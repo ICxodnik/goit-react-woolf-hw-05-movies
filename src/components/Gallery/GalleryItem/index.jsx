@@ -13,8 +13,8 @@ export const GalleryItem = ({ film }) => {
         evt.target.src = getDefaultImage();
         evt.target.srcset = '';
       }}
-      to={`/movies/${film.id}/`}
-      state={{ from: location }}
+      to={`/movies/${film.id}`}
+      state={{ from: location, film }}
     >
       <img
         className={css.poster}

@@ -56,11 +56,13 @@ nav {
   border-radius: 2px;
   padding: 10px;
   border: 0;
+  min-width: 70px;
+  text-align: center;
 }
 
 .button:hover,
 .button:focus,
-.button .active {
+.button.active {
   color: rgb(96, 47, 25);
   background-color: rgb(233, 231, 231);
 }
