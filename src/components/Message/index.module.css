@@ -1,0 +1,12 @@
+.info {
+    color: rgb(60, 59, 59);
+    font-weight: 600;
+}
+
+.warning {
+    color:orange;
+}
+
+.error {
+    color: brown;
+}

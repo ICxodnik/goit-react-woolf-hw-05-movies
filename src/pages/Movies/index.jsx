@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getMovie } from '../../services/api';
 import css from './index.module.css';
 import { Gallery } from 'components/Gallery';
+import Paggination from 'components/Paggination';
+import { Message } from '../../components/Message';
 import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
@@ -46,23 +48,9 @@ export default function Movies() {
   };
 
   if (error) {
-    return <div>{error}</div>;
+    return <Message level="error" message={error} />;
   }
 
-  if (!searchResult.length) {
-    return (
-      <div className={css.page}>
-        <input
-          className={css.input}
-          value={filter}
-          onChange={handleFilter}
-        ></input>
-        <div className={css.info}>
-          There are no movies that matched your query
-        </div>
-      </div>
-    );
-  }
   return (
     <div className={css.page}>
       <input
@@ -70,16 +58,21 @@ export default function Movies() {
         value={filter}
         onChange={handleFilter}
       ></input>
-      <Gallery films={searchResult}></Gallery>
-      <div className={css.pages}>
-        <button className="button" onClick={onHandlePrevPage}>
-          Prev Page
-        </button>
-        <span>{page}</span>
-        <button className="button" onClick={onHandleNextPage}>
-          Next Page
-        </button>
-      </div>
+      {searchResult.length ? (
+        <>
+          <Gallery films={searchResult}></Gallery>
+          <Paggination
+            page={page}
+            onHandlePrevPage={onHandlePrevPage}
+            onHandleNextPage={onHandleNextPage}
+          />
+        </>
+      ) : (
+        <Message
+          level="info"
+          message="There are no movies that matched your query"
+        />
+      )}
     </div>
   );
 }
