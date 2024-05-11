@@ -45,6 +45,10 @@ export const Movies = () => {
     setPage(page + 1);
   };
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   if (!searchResult.length) {
     return (
       <div className={css.page}>

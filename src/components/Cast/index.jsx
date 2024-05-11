@@ -35,6 +35,9 @@ export const Cast = () => {
   if (isLoading) {
     return <Loader hide={!isLoading} />;
   }
+  if (error) {
+    return <div className={css.reviews}>{error}</div>;
+  }
   if (!cast || !cast.length) {
     return (
       <div className={css.reviews}>We don't have any casts for this movie.</div>

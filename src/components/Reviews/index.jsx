@@ -35,6 +35,9 @@ export const Reviews = () => {
   if (isLoading) {
     return <Loader hide={!isLoading} />;
   }
+  if (error) {
+    return <div className={css.reviews}>{error}</div>;
+  }
   if (!review || !review.length) {
     return (
       <div className={css.reviews}>

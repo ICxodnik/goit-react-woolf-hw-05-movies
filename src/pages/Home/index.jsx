@@ -19,6 +19,10 @@ export const Home = () => {
     const data = await getTrending();
     return data;
   }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
   return (
     <div>
       <div className={css.page}>
