@@ -7,14 +7,15 @@ import { Message } from '../../components/Message';
 import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
-  const defaultPage = 1;
+  const defaultPage = '1';
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchResult, setSearchResult] = useState([]);
 
   const filter = searchParams.get('filter') ?? '';
+  const page = searchParams.get('page') ?? defaultPage;
   // const [filter, setFilter] = useState('');
-  const [page, setPage] = useState(defaultPage);
+  // const [page, setPage] = useState(defaultPage);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -31,20 +32,24 @@ export default function Movies() {
   }, [filter, page]);
 
   const handleFilter = e => {
-    setPage(null);
-    setPage(defaultPage);
-    setSearchParams({ filter: e.currentTarget.value });
+    setSearchParams({ filter: e.currentTarget.value, page: defaultPage });
   };
 
   const onHandlePrevPage = e => {
     if (page === defaultPage) {
       return;
     }
-    setPage(page - 1);
+    setSearchParams({
+      filter: filter,
+      page: Number.parseInt(page) - 1,
+    });
   };
 
   const onHandleNextPage = e => {
-    setPage(page + 1);
+    setSearchParams({
+      filter: filter,
+      page: Number.parseInt(page) + 1,
+    });
   };
 
   if (error) {
