@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTrending } from '../../services/api';
 import { Gallery } from 'components/Gallery';
+import css from './index.module.css';
 
 export const Home = () => {
   const [recomends, setRecomends] = useState([]);
@@ -20,7 +21,9 @@ export const Home = () => {
   }
   return (
     <div>
-      <Gallery films={recomends}></Gallery>
+      <div className={css.page}>
+        <Gallery films={recomends}></Gallery>
+      </div>
     </div>
   );
 };
