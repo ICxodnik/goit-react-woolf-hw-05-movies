@@ -6,8 +6,12 @@ import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
 
 export default function Cast() {
+  const maxSize = 12;
+  const unlimeted = -1;
+
   const { movieId } = useParams();
 
+  const [showAll, setShowAll] = useState(true);
   const [cast, setCast] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +26,6 @@ export default function Cast() {
       try {
         setIsLoading(true);
         const data = await getMovieCredits(movieId);
-        console.log(data);
         setCast(data);
       } catch (ex) {
         setError(ex.message);
@@ -31,6 +34,14 @@ export default function Cast() {
       }
     }
   }, [movieId]);
+
+  const handleShowAll = () => {
+    setShowAll(false);
+  };
+
+  const handleScrollUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (isLoading) {
     return <Loader hide={!isLoading} />;
@@ -43,23 +54,43 @@ export default function Cast() {
       <div className={css.reviews}>We don't have any casts for this movie.</div>
     );
   }
+
   return (
-    <div className={css.reviews}>
-      {cast
-        .filter(act => act.profile_path)
-        .map(act => (
-          <div className={css.cast} key={act.id}>
-            <div className={css.imageWrapper}>
-              <img
-                className={css.poster}
-                src={getImageSrc(act.profile_path)}
-                height="60px"
-                alt={act.name}
-              ></img>
+    <>
+      <div className={css.reviews}>
+        {cast
+          .sort((act1, act2) => act2.popularity - act1.popularity)
+          .slice(0, showAll ? maxSize : unlimeted) //works one time
+          .map(act => (
+            <div className={css.cast} key={act.id}>
+              <div className={css.imageWrapper}>
+                <img
+                  className={css.poster}
+                  src={getImageSrc(act.profile_path)}
+                  height="60px"
+                  alt={act.name}
+                ></img>
+              </div>
+              <div className="info">
+                <p className="content">{act.name}</p>
+                <p className={css.character}>{act.character}</p>
+              </div>
             </div>
-            <span className="content">{act.name}</span>
-          </div>
-        ))}
-    </div>
+          ))}
+      </div>
+      {showAll ? (
+        <div className={css.smallButton}>
+          <span className="content" onClick={handleShowAll}>
+            show all ▼
+          </span>
+        </div>
+      ) : (
+        <div className={css.smallButton}>
+          <span className="content" onClick={handleScrollUp}>
+            scroll up ▲
+          </span>
+        </div>
+      )}
+    </>
   );
 }
