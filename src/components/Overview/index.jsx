@@ -7,5 +7,5 @@ export function Overview() {
     return;
   }
   const { film } = location.state;
-  return <div>{film.overview}</div>;
+  return <div className="content">{film.overview}</div>;
 }

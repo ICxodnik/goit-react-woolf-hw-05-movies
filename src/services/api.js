@@ -19,6 +19,7 @@ export async function getMovie(searchValue, page) {
         params: {
             query: searchValue,
             page,
+            sort_by: 'vote_average.desc'
         }
     });
     console.log(response);
@@ -38,11 +39,11 @@ export async function getMovieCredits(id) {
 }
 
 export async function getMovieReviews(id) {
-    const response = await filmFetcher.get('/movie/?movie_id/reviews', {
+    const response = await filmFetcher.get(`/movie/${id}/reviews`, {
         params: {
             movie_id: id,
         }
     });
     console.log(response);
-    return response;
+    return response.data.results;
 }
