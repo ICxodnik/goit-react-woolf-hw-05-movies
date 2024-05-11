@@ -37,9 +37,7 @@ export const Cast = () => {
   }
   if (!cast || !cast.length) {
     return (
-      <div className={css.reviews}>
-        We don't have any reviews for this movie.
-      </div>
+      <div className={css.reviews}>We don't have any casts for this movie.</div>
     );
   }
   return (
