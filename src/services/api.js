@@ -9,7 +9,7 @@ const filmFetcher = axios.create({
 });
 
 export async function getTrending() {
-    const response = await filmFetcher.get('trending/all/day');
+    const response = await filmFetcher.get('trending/movie/day');
     console.log(response);
     return response.data.results;
 }
