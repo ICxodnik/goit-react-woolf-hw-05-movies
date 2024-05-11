@@ -12,16 +12,21 @@ export const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
   const [movie, setMovie] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    setError(null);
+
     if (!movieId) return;
     getData();
 
     async function getData() {
-      const moviData = await getMovieDetails(movieId);
-      console.log(moviData);
-
-      setMovie(moviData);
+      try {
+        const moviData = await getMovieDetails(movieId);
+        setMovie(moviData);
+      } catch (ex) {
+        setError(ex.message);
+      }
     }
   }, [movieId]);
 
@@ -36,6 +41,7 @@ export const MovieDetails = () => {
       <Link to={backLinkHref} className={css.button}>
         ← Back to search
       </Link>
+      {error && <div className={css.error}>{error}</div>}
       {movie && (
         <div className={css.movie}>
           <div className={css.movieData}>
