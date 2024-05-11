@@ -33,6 +33,9 @@ export const MovieDetails = () => {
         evt.target.srcset = '';
       }}
     >
+      <Link to={backLinkHref} className={css.button}>
+        ← Back to search
+      </Link>
       {movie && (
         <div className={css.movie}>
           <div className={css.movieData}>
@@ -41,7 +44,6 @@ export const MovieDetails = () => {
               src={getImageSrc(movie.poster_path)}
               srcSet={getImageSrcSet(movie.poster_path)}
               alt={movie.title ?? movie.name}
-              width="330px"
               height="440px"
             ></img>
             <div className={css.movieInfo}>
@@ -69,9 +71,6 @@ export const MovieDetails = () => {
           </div>
         </div>
       )}
-      <Link to={backLinkHref} className={css.button}>
-        ← Back to products
-      </Link>
       <Outlet />
     </div>
   );

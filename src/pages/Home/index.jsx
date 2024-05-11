@@ -16,7 +16,6 @@ export const Home = () => {
 
   async function getLinks() {
     const data = await getTrending();
-    console.log(data);
     return data;
   }
   return (
