@@ -26,21 +26,13 @@ export async function getMovie(searchValue, page) {
 }
 
 export async function getMovieDetails(id) {
-    const response = await filmFetcher.get('/movie/?movie_id', {
-        params: {
-            movie_id: id,
-        }
-    });
+    const response = await filmFetcher.get('/movie/' + id);
     console.log(response);
-    return response;
+    return response.data;
 }
 
 export async function getMovieCredits(id) {
-    const response = await filmFetcher.get('/movie/?movie_id/credits', {
-        params: {
-            movie_id: id,
-        }
-    });
+    const response = await filmFetcher.get(`/movie/${id}/credits`);
     console.log(response);
     return response;
 }
