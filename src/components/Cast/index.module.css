@@ -43,10 +43,3 @@
     width: 100%;
     height: auto;
 }
-
-.smallButton {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    padding: 10px;
-}

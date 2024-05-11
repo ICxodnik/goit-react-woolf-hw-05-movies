@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
+import { ScrollUp } from 'components/ScrollUp';
 
 export default function Cast() {
   const maxSize = 12;
@@ -46,10 +47,6 @@ export default function Cast() {
     setShowAll(false);
   };
 
-  const handleScrollUp = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   if (isLoading) {
     return <Loader hide={!isLoading} />;
   }
@@ -85,17 +82,13 @@ export default function Cast() {
           ))}
       </div>
       {showAll ? (
-        <div className={css.smallButton}>
+        <div className="smallButton">
           <span className="content" onClick={handleShowAll}>
             show all ▼
           </span>
         </div>
       ) : (
-        <div className={css.smallButton}>
-          <span className="content" onClick={handleScrollUp}>
-            scroll up ▲
-          </span>
-        </div>
+        <ScrollUp />
       )}
     </>
   );

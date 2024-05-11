@@ -72,3 +72,10 @@ nav {
   color: rgb(60, 59, 59);
   font-weight: 600;
 }
+
+.smallButton {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+}

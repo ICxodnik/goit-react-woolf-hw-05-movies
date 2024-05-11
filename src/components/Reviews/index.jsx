@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import css from './index.module.css';
 import { getImageSrc } from 'services/image';
 import Loader from '../Loader';
+import { ScrollUp } from 'components/ScrollUp';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -45,23 +46,26 @@ export default function Reviews() {
     );
   }
   return (
-    <div className={css.reviews}>
-      {review.map(rw => (
-        <div className={css.review} key={rw.id}>
-          <div className={css.reviewHeader}>
-            <div className={css.imageWrapper}>
-              <img
-                className={css.poster}
-                src={getImageSrc(rw.author_details.avatar_path)}
-                height="60px"
-                alt={rw.author}
-              ></img>
+    <>
+      <div className={css.reviews}>
+        {review.map(rw => (
+          <div className={css.review} key={rw.id}>
+            <div className={css.reviewHeader}>
+              <div className={css.imageWrapper}>
+                <img
+                  className={css.poster}
+                  src={getImageSrc(rw.author_details.avatar_path)}
+                  height="60px"
+                  alt={rw.author}
+                ></img>
+              </div>
+              <span className={css.author}>{rw.author}</span>
             </div>
-            <span className={css.author}>{rw.author}</span>
+            <span className="content">{rw.content}</span>
           </div>
-          <span className="content">{rw.content}</span>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      <ScrollUp />
+    </>
   );
 }
