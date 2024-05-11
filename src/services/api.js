@@ -35,7 +35,7 @@ export async function getMovieDetails(id) {
 export async function getMovieCredits(id) {
     const response = await filmFetcher.get(`/movie/${id}/credits`);
     console.log(response);
-    return response;
+    return response.data.cast;
 }
 
 export async function getMovieReviews(id) {
