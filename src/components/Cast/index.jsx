@@ -39,10 +39,10 @@ export default function Cast() {
     }
   }, [movieId]);
 
-  const memoizedData = useMemo(() =>
-    cast
-      ? cast.sort((act1, act2) => act2.popularity - act1.popularity)
-      : [][cast]
+  const memoizedData = useMemo(
+    () =>
+      cast ? cast.sort((act1, act2) => act2.popularity - act1.popularity) : [],
+    [cast]
   );
 
   const handleShowAll = () => {
